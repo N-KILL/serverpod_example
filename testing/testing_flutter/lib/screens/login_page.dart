@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:testing_flutter/widgets/login_widgets.dart';
+import 'package:testing_flutter/widgets/widgets.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -30,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
               height: 100,
             ),
             TextoBox(
-              label: 'Enter Username',
+              label: 'Username',
               hint: 'Ej: Pepito',
               censura: false,
               keyboard: TextInputType.name,
@@ -38,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Divider(height: 25),
             TextoBox(
-              label: 'Enter Mail',
+              label: 'Mail',
               hint: 'Ej: pepitohdp@hotmail.com',
               censura: false,
               keyboard: TextInputType.emailAddress,
@@ -46,12 +46,13 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Divider(height: 25),
             TextoBox(
-              label: 'Enter Password',
+              label: 'Password',
               hint: '',
               censura: true,
               keyboard: TextInputType.text,
               icono: Icon(Icons.verified_user_outlined),
             ),
+            ButtonElevated(),
           ],
         ),
       ),

@@ -19,12 +19,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Serverpod Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       initialRoute: 'login',
       routes: {
         'login': (_) => const LoginPage(),
+        'result': (_) => const Resultado(),
       },
     );
   }
