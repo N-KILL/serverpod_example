@@ -8,6 +8,8 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
 import '../endpoints/example_endpoint.dart' as _i2;
+import '../endpoints/user_endpoint.dart' as _i3;
+import 'package:testing_server/src/generated/user.dart' as _i4;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
@@ -23,6 +25,18 @@ class Endpoints extends _i1.EndpointDispatch {
         ..initialize(
           server,
           'testing',
+          null,
+        ),
+      'user': _i3.UserEndpoint()
+        ..initialize(
+          server,
+          'user',
+          null,
+        ),
+      'getUser': _i3.GetUserEndpoint()
+        ..initialize(
+          server,
+          'getUser',
           null,
         ),
     };
@@ -71,6 +85,45 @@ class Endpoints extends _i1.EndpointDispatch {
             session,
             params['name'],
           ),
+        )
+      },
+    );
+    connectors['user'] = _i1.EndpointConnector(
+      name: 'user',
+      endpoint: endpoints['user']!,
+      methodConnectors: {
+        'registerUser': _i1.MethodConnector(
+          name: 'registerUser',
+          params: {
+            'user': _i1.ParameterDescription(
+              name: 'user',
+              type: _i1.getType<_i4.User>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['user'] as _i3.UserEndpoint).registerUser(
+            session,
+            params['user'],
+          ),
+        )
+      },
+    );
+    connectors['getUser'] = _i1.EndpointConnector(
+      name: 'getUser',
+      endpoint: endpoints['getUser']!,
+      methodConnectors: {
+        'getUsers': _i1.MethodConnector(
+          name: 'getUsers',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['getUser'] as _i3.GetUserEndpoint).getUsers(session),
         )
       },
     );
