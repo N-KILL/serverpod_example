@@ -1,7 +1,6 @@
 class: User
 table: user
 fields:
-  id: String
   name: String
   mail: String
   password: String
